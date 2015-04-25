@@ -1,6 +1,23 @@
-var gameSettings = {
-	score: '',
-	currentFrame: ''
+var settings = {
+	interval: 
+	music: {
+		source: '',
+		active: false;
+	}
+}
+
+var snake = {
+	array: [],
+	getLength: function () {
+		return this.array.length;
+	}
+}
+
+var game = {
+	score: 0,
+	currentFood: {},
+	snakeArray: [],
+	currentFrame: {},
 
 }
 
