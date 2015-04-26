@@ -76,18 +76,18 @@ function createSnake () {
 	}
 }
 
-function paintSnake () {
-	var i;
-	var snakeLength = snakeArray.length;
-	for (i = 0; i < snakeLength; i++) {
-		var cx = snakeArray[i].x;
-		var cy = snakeArray[i].y;
-		ctx.fillStyle = '#000000';
-		ctx.fillRect(cx*cs, cy*cs, cs, cs);
-		ctx.strokeStyle = '#FFFFFF';
-		ctx.strokeRect(cx*cs, cy*cs, cs, cs);
-	}
-}
+// function paintSnake () {
+// 	var i;
+// 	var snakeLength = snakeArray.length;
+// 	for (i = 0; i < snakeLength; i++) {
+// 		var cx = snakeArray[i].x;
+// 		var cy = snakeArray[i].y;
+// 		ctx.fillStyle = '#000000';
+// 		ctx.fillRect(cx*cs, cy*cs, cs, cs);
+// 		ctx.strokeStyle = '#FFFFFF';
+// 		ctx.strokeRect(cx*cs, cy*cs, cs, cs);
+// 	}
+// }
 
 
 function moveSnake () {
