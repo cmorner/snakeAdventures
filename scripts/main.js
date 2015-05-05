@@ -2,40 +2,6 @@ var settings = {
 	interval: 45, // Length in millisec
 }
 
-var canvas = {
-	ctx: '',
-	width: 405,
-	cw: 9, // Cellwidth
-	nrOfCells: 45,
-	bgColor: '#FFFFFF',
-	strokeColor: '#999999',
-	create: function () {
-		var canvas = document.getElementById('canvas');
-		console.log(this);
-		this.ctx = canvas.getContext('2d');
-	},
-	snake: {
-		color: '#000000',
-		strokeColor: '#FFFFFF'
-	},
-	paintBg: function () {
-		this.ctx.fillStyle = this.bgColor;
-		this.ctx.fillRect(0, 0, this.width, this.width);
-		this.ctx.strokeStyle = this.strokeColor;
-		this.ctx.strokeRect(0, 0, this.width, this.width);
-	},
-	paintSnake: function (array) {
-		this.ctx.fillStyle = this.snake.color;
-		this.ctx.strokeStyle = this.snake.strokeColor;
-		for (var i = 0; i < array.length; i++) {
-			var cx = array[i].x;
-			var cy = array[i].y;
-			this.ctx.fillRect(cx*this.cw, cy*this.cw, this.cw, this.cw);
-			this.ctx.strokeRect(cx*this.cw, cy*this.cw, this.cw, this.cw);
-		}
-	}
-}
-
 var grid = {};
 
 // Snake class

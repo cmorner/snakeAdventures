@@ -1,2 +1,114 @@
+V1
+	Åka runt med ormen och ta mat
+	Åka in i olika frames som har egna settings
+	Ny mat generaras i den nya framen man byter till
+	Kunna se sin svans när man byter frame
+	Alla grafikFormer tar upp samma yta
+
+Modules
+	drawing
+	snake
+
+var sa = sa || {};
+
+drawing module
+	Handles all the drawing
+	Functions
+		drawRect(bgColor, strokeColor, size, pos)
+		drawCircle(bgColor, strokeColor, size, pos)
+		drawObjects([{color: '#000', coords:[{x: 1, y:2}]}]) // Takes an Array with object objects
+
+snake = {
+	color: '',
+	boxShape: 'square',
+	direction: 'right',
+	array: [{x: 0, y:0}, {x: 1, y:0}, {x: 2, y:0}, {x: 3, y:0}, {x: 4, y:0}],
+	increaseSnake: function () {
+
+	},
+	moveSnake: function (direction) {},
+	changeFrame: function (direction) {}
+}
+
+controls
+	Set keyEvents
+	
+
+obstacles = {
+	color: {
+		bg: '#000000',
+		stroke: '#FFFFFF'
+	}
+	array: {
+
+	},
+	collisionCheck: function (point) { // Takes single 
+
+	}
+}
+
+mapHandler = {
+	changeFrameHandler: function (direction) {
+
+	}
+}
+
+function getEmptyPoint () {
+	var snakeArray;
+	var ObstaclesArray
+
+} 
+
+gameHandler
+
+food = {
+	color: {
+		bg: '#000000',
+		stroke: '#F00'
+	} 
+	currentFood: {x: 1, y:1},
+	function: generate () {
+	}
+}
+
+Raw logic
+Logic Settings
+Object graphic settings
+Drawing functions
+
+Canvas objektet tar en funktion som heter 
+	drawObject (pointShape, color, coordsArray)
+
+bgObj = {
+	color: '#000',
+	img: '',
+}
+
+snakeObj = {
+	array: [],
+	color,
+	pointShape
+}
+
+foodObj = {
+	location: {
+		x: 0,
+		y: 0
+	}
+}
+
+function setNewFrame ()
+
+mapObj = {
+	currentFrame: 'x0y0'
+	frames: {
+
+	},
+	setNewFrame = function (newFrameId) {
+		this.currentFrame = this.frames[newFrameId]; 
+	}
+
+}
+
 Börjar i grid och går över till mjuk obegränsad rörelse
 
