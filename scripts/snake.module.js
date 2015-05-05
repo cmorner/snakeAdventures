@@ -13,8 +13,8 @@ sa.snake = (function () {
 	obj.getLength = function () {
 		return snakeArray.length;
 	}
-	obj.setDirection = function (direction) {
-		direction = direction;
+	obj.setDirection = function (newDirection) {
+		direction = newDirection;
 	}
 
 	// Creates a new snake objec based on direction
@@ -44,8 +44,14 @@ sa.snake = (function () {
 		return {x: nx, y: ny};
 	}
 
-	obj.moveSnake = function (newPosObject) {
-		snakeArray.shift();
+	obj.growSnake = function (newPosObject) {
+		this.moveSnake(newPosObject, true);
+	}
+
+	obj.moveSnake = function (newPosObject, grow) {
+		if (!grow) {
+			snakeArray.shift();
+		}
 		snakeArray.push(newPosObject);
 	}
 
@@ -67,16 +73,28 @@ sa.snake = (function () {
 		return false;
 	}
 
-	obj.changeFrame = function (direction) {
-		var len = this.getLength;
+	obj.changeFrame = function (direction, gridWidth) {
+		var len = this.getLength(), i;
 		switch (direction) {
 			case 'left':
+				for (i = 0; i < len; i++) {
+					snakeArray[i].x = snakeArray[i].x + gridWidth; 
+				}
 				break;
 			case 'top':
+				for (i = 0; i < len; i++) {
+					snakeArray[i].y = snakeArray[i].y + gridWidth; 
+				}
 				break;
 			case 'right':
+				for (i = 0; i < len; i++) {
+					snakeArray[i].x = snakeArray[i].x - gridWidth; 
+				}
 				break;
 			case 'down':
+				for (i = 0; i < len; i++) {
+					snakeArray[i].y = snakeArray[i].x - gridWidth; 
+				}
 				break;
 		}
 	}
@@ -85,23 +103,66 @@ sa.snake = (function () {
 })();
 
 (function () {
-	var newpos = sa.snake.createNewPos();
-	console.log(newpos);
-	var collision = sa.snake.checkCollision(newpos);
-	// Food
-	// Change Frame
-	// Wallcollide
-	console.log(collision);
-	sa.snake.moveSnake(newpos);
 
-	// Draw snake
-	var snakeArray = sa.snake.getSnakeArray();
+	setInterval(gameLoop, 60);
 
-
+	// Setup
 	var c = sa.canvas;
 
-	// drawBg
-	c.drawBg().paintScore(10);
-	c.drawSnake(snakeArray);
+	document.onkeydown = function (e) {
+		switch (e.keyCode) {
+			case 37:
+				sa.snake.setDirection('left');
+				break;
+			case 38:
+				sa.snake.setDirection('up');
+				break;
+			case 39:
+				sa.snake.setDirection('right');
+				break;
+			case 40:
+				sa.snake.setDirection('down');
+				break;
+		}
+	};
+
+	function gameLoop () {
+		var foodCoords = sa.food.current();
+		var obstaclesArray = sa.obstacles.getObstacles();
+		
+		var newpos = sa.snake.createNewPos();
+		var selfCollision = sa.snake.checkCollision(newpos);
+		var foodCollision = sa.food.hit(newpos);
+		
+		if (newpos.x < 0) {
+			sa.snake.changeFrame('left', 45);
+			newpos.x = newpos.x + 45;
+		} else if (newpos.x > 45) {
+			sa.snake.changeFrame('right', 45);
+			newpos.x = newpos.x - 45;
+		} else if (newpos.y < 0) {
+			sa.snake.changeFrame('up', 45);
+			newpos.x = newpos.y + 45;
+		} else if (newpos.y > 45) {
+			sa.snake.changeFrame('down', 45);
+			newpos.x = newpos.y - 45;
+		}
+
+		var snakeArray = sa.snake.getSnakeArray();
+
+		if (foodCollision) {
+			sa.snake.growSnake(newpos)
+		} else if (selfCollision) {
+			console.log('you died');
+			sa.snake.moveSnake(newpos);
+		} else {
+			sa.snake.moveSnake(newpos);
+		}
+
+		c.drawBg().paintScore(10);
+		c.drawFood(foodCoords);
+		c.drawObstacles(obstaclesArray);
+		c.drawSnake(snakeArray);
+	}
 
 })();
