@@ -5,110 +5,14 @@ V1
 	Kunna se sin svans när man byter frame
 	Alla grafikFormer tar upp samma yta
 
-Modules
-	drawing
-	snake
+Game ideas
 
-var sa = sa || {};
+Cover the pattern
+Det finns ett mönster i bakgrunden av banan och målet är att bli tillräckligt stor för att sedan täcka över hela mönstret. Mönstret börjar enkelt och blir sedan mer och mer komplicerat. Krävs att både bli tillräckligt stor och sedan tänka ut hur man kan täcka mönstret.
 
-drawing module
-	Handles all the drawing
-	Functions
-		drawRect(bgColor, strokeColor, size, pos)
-		drawCircle(bgColor, strokeColor, size, pos)
-		drawObjects([{color: '#000', coords:[{x: 1, y:2}]}]) // Takes an Array with object objects
-
-snake = {
-	color: '',
-	boxShape: 'square',
-	direction: 'right',
-	array: [{x: 0, y:0}, {x: 1, y:0}, {x: 2, y:0}, {x: 3, y:0}, {x: 4, y:0}],
-	increaseSnake: function () {
-
-	},
-	moveSnake: function (direction) {},
-	changeFrame: function (direction) {}
-}
-
-controls
-	Set keyEvents
-	
-
-obstacles = {
-	color: {
-		bg: '#000000',
-		stroke: '#FFFFFF'
-	}
-	array: {
-
-	},
-	collisionCheck: function (point) { // Takes single 
-
-	}
-}
-
-mapHandler = {
-	changeFrameHandler: function (direction) {
-
-	}
-}
-
-function getEmptyPoint () {
-	var snakeArray;
-	var ObstaclesArray
-
-} 
-
-gameHandler
-
-food = {
-	color: {
-		bg: '#000000',
-		stroke: '#F00'
-	} 
-	currentFood: {x: 1, y:1},
-	function: generate () {
-	}
-}
-
-Raw logic
-Logic Settings
-Object graphic settings
-Drawing functions
-
-Canvas objektet tar en funktion som heter 
-	drawObject (pointShape, color, coordsArray)
-
-bgObj = {
-	color: '#000',
-	img: '',
-}
-
-snakeObj = {
-	array: [],
-	color,
-	pointShape
-}
-
-foodObj = {
-	location: {
-		x: 0,
-		y: 0
-	}
-}
-
-function setNewFrame ()
-
-mapObj = {
-	currentFrame: 'x0y0'
-	frames: {
-
-	},
-	setNewFrame = function (newFrameId) {
-		this.currentFrame = this.frames[newFrameId]; 
-	}
-
-}
+Lead the bird
+Det finns en bångstyrig fågel som behövs ledas från en punkt till en annan.
+Bygg upp en gedingen längd på ormen och bygg sedan en bana eller slut upp runt den och led den vidare till en specifik zon.
 
 Börjar i grid och går över till mjuk obegränsad rörelse
 
