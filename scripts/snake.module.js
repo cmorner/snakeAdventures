@@ -81,7 +81,7 @@ sa.snake = (function () {
 					snakeArray[i].x = snakeArray[i].x + gridWidth; 
 				}
 				break;
-			case 'top':
+			case 'up':
 				for (i = 0; i < len; i++) {
 					snakeArray[i].y = snakeArray[i].y + gridWidth; 
 				}
@@ -93,7 +93,7 @@ sa.snake = (function () {
 				break;
 			case 'down':
 				for (i = 0; i < len; i++) {
-					snakeArray[i].y = snakeArray[i].x - gridWidth; 
+					snakeArray[i].y = snakeArray[i].y - gridWidth; 
 				}
 				break;
 		}
@@ -109,23 +109,6 @@ sa.snake = (function () {
 	// Setup
 	var c = sa.canvas;
 
-	document.onkeydown = function (e) {
-		switch (e.keyCode) {
-			case 37:
-				sa.snake.setDirection('left');
-				break;
-			case 38:
-				sa.snake.setDirection('up');
-				break;
-			case 39:
-				sa.snake.setDirection('right');
-				break;
-			case 40:
-				sa.snake.setDirection('down');
-				break;
-		}
-	};
-
 	function gameLoop () {
 		var foodCoords = sa.food.current();
 		var obstaclesArray = sa.obstacles.getObstacles();
@@ -134,18 +117,20 @@ sa.snake = (function () {
 		var selfCollision = sa.snake.checkCollision(newpos);
 		var foodCollision = sa.food.hit(newpos);
 		
-		if (newpos.x < 0) {
-			sa.snake.changeFrame('left', 45);
-			newpos.x = newpos.x + 45;
-		} else if (newpos.x > 45) {
-			sa.snake.changeFrame('right', 45);
-			newpos.x = newpos.x - 45;
-		} else if (newpos.y < 0) {
-			sa.snake.changeFrame('up', 45);
-			newpos.x = newpos.y + 45;
-		} else if (newpos.y > 45) {
-			sa.snake.changeFrame('down', 45);
-			newpos.x = newpos.y - 45;
+		function checkForFrameChange (newpos) {
+			if (newpos.x < 0) {
+				sa.snake.changeFrame('left', 45);
+				newpos.x = newpos.x + 45;
+			} else if (newpos.x > 45) {
+				sa.snake.changeFrame('right', 45);
+				newpos.x = newpos.x - 45;
+			} else if (newpos.y < 0) {
+				sa.snake.changeFrame('up', 45);
+				newpos.y = newpos.y + 45;
+			} else if (newpos.y > 45) {
+				sa.snake.changeFrame('down', 45);
+				newpos.y = newpos.y - 45;
+			}
 		}
 
 		var snakeArray = sa.snake.getSnakeArray();
@@ -159,6 +144,7 @@ sa.snake = (function () {
 			sa.snake.moveSnake(newpos);
 		}
 
+		//
 		c.drawBg().paintScore(10);
 		c.drawFood(foodCoords);
 		c.drawObstacles(obstaclesArray);
