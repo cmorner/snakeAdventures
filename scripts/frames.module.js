@@ -1,6 +1,7 @@
 var sa = sa || {};
 
 sa.frame = (function () {
+	var startFrameId = 'x0y0';
 	var currentFrameId = 'x0y0';
 	
 	var frames = {
@@ -14,7 +15,7 @@ sa.frame = (function () {
 			}
 		},
 		x1y0: {
-			obstaclesArray: [],
+			obstaclesArray: [{x: 43, y:10}, {x: 44, y:10}, {x: 45, y:10}, {x: 43, y:11}],
 			framechange: {
 				left: 'x0y0',
 				up: '',
@@ -27,9 +28,16 @@ sa.frame = (function () {
 	var obj = {};
 
 	obj.changeFrame = function (direction) {
-		var newFrameId = frames[currentFrameId].direction; // Get new frame id
-		var currentFrameId = newFrameId;
-		return frames[newFrameId];
+		currentFrameId = frames[currentFrameId].framechange[direction]; // Get new frame id
+		return this.getCurrentFrame();
+	}
+
+	obj.reset = function () {
+		currentFrameId = startFrameId;
+	}
+
+	obj.setStartFrame = function () {
+		currentFrameId = startFrameId;
 	}
 
 	obj.getCurrentFrame = function () {

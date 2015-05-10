@@ -1,10 +1,16 @@
 var sa = sa || {};
 
 sa.snake = (function () {
+	var snakeStartArray = [{x:0, y:0}, {x: 1, y:0}, {x: 2, y:0}, {x: 3, y:0}, {x: 4, y:0}];
 	var snakeArray = [{x:0, y:0}, {x: 1, y:0}, {x: 2, y:0}, {x: 3, y:0}, {x: 4, y:0}];
 	var direction = 'right';
 
 	var obj = {};
+
+	obj.reset = function () {
+		snakeArray = snakeStartArray;
+		direction = 'right';
+	}
 
 	obj.getSnakeArray = function () {
 		return snakeArray;

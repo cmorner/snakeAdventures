@@ -5,8 +5,15 @@ V1
 	Kunna se sin svans när man byter frame
 	Alla grafikFormer tar upp samma yta
 
+Left on V1:
+	[] Generate new food
+	[] Trigger food generation in the new frame
+	[] Crash into obstacles and reset game
+	[] Crash into snake and reset game
+
 Optimization
-	Not redrawing the whole game if not needed 
+	- Not redrawing the whole game if not needed 
+	- Drawing bigger areas at the same time
 
 Game ideas
 
@@ -21,3 +28,10 @@ Börjar i grid och går över till mjuk obegränsad rörelse
 
 Try to control something or learn a behavior just based on some numbers.
 Control the snake efficiently just based on how the score number rises
+
+Become a better snake by building for example perfect square (gain some kind of ability)
+
+The world is only a set numbers of spaces high and wide and eventually everything starts coming back, like a cube
+
+Answer questions that you have to cleverly figure out about the world you are exploring
+	- What kind of geometric figure does the world's surfices make up?
