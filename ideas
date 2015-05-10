@@ -5,6 +5,9 @@ V1
 	Kunna se sin svans när man byter frame
 	Alla grafikFormer tar upp samma yta
 
+Optimization
+	Not redrawing the whole game if not needed 
+
 Game ideas
 
 Cover the pattern
@@ -16,3 +19,5 @@ Bygg upp en gedingen längd på ormen och bygg sedan en bana eller slut upp runt
 
 Börjar i grid och går över till mjuk obegränsad rörelse
 
+Try to control something or learn a behavior just based on some numbers.
+Control the snake efficiently just based on how the score number rises

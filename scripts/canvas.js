@@ -95,5 +95,13 @@ sa.canvas = (function () {
 		ctx.fillText(score, 10, 25);
 	}
 
+	obj.drawGame = function (snakeArray, obstaclesArray, foodCords, score) {
+		this.drawBg();
+		this.drawSnake(snakeArray);
+		this.drawObstacles(obstaclesArray);
+		this.paintScore(score);
+		this.drawFood(foodCords);
+	}
+
 	return obj;
 })();
