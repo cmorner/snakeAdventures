@@ -1,5 +1,9 @@
 var sa = sa || {};
 
+var sa = sa || {};
+
+
+
 sa.frame = (function () {
 	var startFrameId = 'x0y0';
 	var currentFrameId = 'x0y0';

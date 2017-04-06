@@ -26,7 +26,7 @@ sa.canvas = (function () {
 
 	var foodSettings = {
 		color: {
-			bg: '#F00'
+			bg: '#000'
 		}
 	}
 
