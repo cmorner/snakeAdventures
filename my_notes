@@ -10,7 +10,12 @@ Left on V1:
 	[] Trigger food generation in the new frame
 	[] Crash into obstacles and reset game
 	[] Crash into snake and reset game
-	[ ] Ormen kan äta mat
+	
+	[ ] Spelet startas om om man åker in i sig själv
+	[X] Man kan inte snabbt ändra riktning 2 gånger under 1 frame
+	[X] Ny mat genereras när ormen har ätit den
+	[X] Maten försvinner och kommer upp på ett nytt ställe
+	[X] Ormen kan äta mat
 	[X] Ormen kan inte byta riktning in i sig själv 
 
 Optimization
@@ -41,3 +46,12 @@ The world is only a set numbers of spaces high and wide and eventually everythin
 
 Answer questions that you have to cleverly figure out about the world you are exploring
 	- What kind of geometric figure does the world's surfices make up?
+
+Canvas börjar snurra
+man måste ta 10 mat inom varje frame innan man kan röra sig vidare till en annan frame
+det kommer upp distraherande bilder runtomkring på hemsidan. nakna tjejer osv.
+
+
+Övriga idéer
+	Optimera man kan byta riktning två gånger i en frame sålänge man inte går emot den ursprungliga riktningen man hade i förra framen. Kan vara en lösning om det är ett problem att man trycker snabbt två gånger men sedan
+	genomförs inte riktningsförändringen.

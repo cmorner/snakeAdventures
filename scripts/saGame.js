@@ -7,12 +7,47 @@ sa.main = (function () {
 
 	var currentIntervalId;
 
+	var gameFieldCellsArray = [];
+
+	// Width of game in nr of cells
+	var gameDimension;
+
+
+
 	obj.init = function () {
 		// Gets the current frame which is an object specifying the obstacles coordinates and possible 
 		// framechanges from the current frame
 		var firstFrame = sa.frame.getCurrentFrame();
+
+		// Get gameDimension based of width of canvas / Width of a cell
+		gameDimension = sa.canvas.getNrOfCells();
+
+		gameFieldCellsArray = obj.createGameFieldCellsArray(gameDimension);
+
+		// Add eventlisteners to keydown
+		sa.controls.bindKeyEvents();
+
+		// Generate the initial food Coordinates based based on available coordinates
+		//sa.food.generate(gameFieldCellsArray);
+
 		// Load obstacles object into obstacles module
 		//sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
+
+	}
+
+	// Creates an array holding cells of position objects
+	// such as {x: 2, y: 10} and is used to keep track of empty cells where new food
+	// can be generated
+	obj.createGameFieldCellsArray = function (dimension) {
+		var array = [];
+
+		for (var i = 0; i < dimension - 1; i++) {
+			for (var n = 0; n < dimension; n++) {
+				array.push({x: i, y: n});
+			}
+		}
+
+		return array;
 	}
 
 	obj.changeFrame = function (direction) {
@@ -23,15 +58,18 @@ sa.main = (function () {
 	obj.handleSnakeMovement = function () {}
 
 	obj.gameLoop = function () {
+		// Unlocks lock that prevents user from changing direction more than once per frame
+		sa.controls.unlockDirectionChange();
+
 		var foodCoords = sa.food.current(); // Only needs to be updated if frameChange or new food
 		var obstaclesArray = sa.obstacles.getObstacles(); // Only needs to be updated if Frame change
 
 		var newpos = sa.snake.createNewPos();
-		//var selfCollision = sa.snake.checkCollision(newpos);
-		//var foodCollision = sa.food.hit(newpos);
+		
+		var selfCollision = sa.snake.checkCollision(newpos);
 
-		var selfCollision = false;
-		var foodCollision = false;
+		var foodCollision = sa.food.hit(newpos);
+
 
 		// check the new position of snake head to see if we need to initiate a frame change
 /*		if (newpos.x < 0) {
@@ -56,8 +94,9 @@ sa.main = (function () {
 		
 		var snakeArray = sa.snake.getSnakeArray();
 
-		if (foodCollision) {
+		if (foodCollision) { 
 			sa.snake.growSnake(newpos)
+			sa.food.generate(gameFieldCellsArray);
 			score = score + 1;
 		} else if (selfCollision) {
 			//console.log(this);
@@ -65,7 +104,6 @@ sa.main = (function () {
 			sa.snake.moveSnake(newpos);
 		}
 
-		console.log(snakeArray);
 		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score) // Draw game
 	}
 

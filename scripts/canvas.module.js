@@ -81,6 +81,10 @@ sa.canvas = (function () {
 		return this;
 	}
 
+	obj.getNrOfCells = function () {
+		return width/cw;
+	}
+
 	obj.drawObstacles = function (obstaclesArray) {
 		this.drawSquares(obstaclesArray, obstaclesSettings.color.bg, obstaclesSettings.color.stroke);
 	}
