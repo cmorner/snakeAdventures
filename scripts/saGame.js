@@ -64,7 +64,7 @@ sa.main = (function () {
 	obj.removeGameFieldCells = function (cellsToRemove) {
 		// Gå igenom alla celler som finns för tex hindren och ta bort celler från
 		// Game field arrayen en efter en 
-		for (var i = 0; i < cellsToRemove.length - 1; i++) {
+		for (var i = 0; i < cellsToRemove.length ; i++) {
 
 			var indexCounter = gameFieldCellsArray.length - 1;
 			for (var n = 0; n < indexCounter; n++) {

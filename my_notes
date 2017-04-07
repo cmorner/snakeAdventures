@@ -6,14 +6,15 @@ V1
 	Alla grafikFormer tar upp samma yta
 
 Left on V1:
-	[ ] Det går att åka igenom väggen på den nedersta hinder blocken
-
-
-	[] Trigger food generation in the new frame
 	
+
+
+	[ ] Trigger food generation in the new frame
 	[ ] Man kan åka in i en annan frame där nya hinder och mat dyker upp
-	[ ] Maten kan inte genereras på ormen själv
-	[ ] Maten kan inte genereras på ett hinder
+
+	[X] Det går att åka igenom väggen på den nedersta hinder blocken	
+	[X] Maten kan inte genereras på ett hinder
+	[X] Testa att maten inte kan genereras på ett hinder
 	[X] Crash into obstacles and reset game
 	[X] Spelet startas om och nollställs vid krash in i ett objekt
 	[X] Generera obstacles
@@ -25,6 +26,9 @@ Left on V1:
 	[X] Maten försvinner och kommer upp på ett nytt ställe
 	[X] Ormen kan äta mat
 	[X] Ormen kan inte byta riktning in i sig själv 
+
+Less important possible game improvements
+	Maten genereras inte på ormen själv
 
 Optimization
 	- Not redrawing the whole game if not needed 
@@ -60,6 +64,11 @@ man måste ta 10 mat inom varje frame innan man kan röra sig vidare till en ann
 det kommer upp distraherande bilder runtomkring på hemsidan. nakna tjejer osv.
 
 
+Spelet täcks över med en svart canvas och så står det någon text,
+	"What kind of world do you want to live in?"
+	"Lets move towards something better than this"
+
+
 Övriga idéer
 	Optimera man kan byta riktning två gånger i en frame sålänge man inte går emot den ursprungliga riktningen man hade i förra framen. Kan vara en lösning om det är ett problem att man trycker snabbt två gånger men sedan
 	genomförs inte riktningsförändringen.
@@ -73,3 +82,7 @@ det kommer upp distraherande bilder runtomkring på hemsidan. nakna tjejer osv.
 	för att jämföra vid krash och en för generering av objekt. Kanske skulle jag kunna använda mig av en hashtabell
 	där nyckeln genereras av värdet på xochy och koordinat objektet är värdet och på så sätt snabbt kunna se om
 	det existerar ett hinderspunkt på stället där jag vill skapa mat.
+
+
+Hur skall man skriva för att man skall göra något för varje element i en array,
+exempelvis (var i=0; i<lengthOfArray;i++) är det såhär man gör något för varje element i arrayen?
