@@ -6,15 +6,18 @@ V1
 	Alla grafikFormer tar upp samma yta
 
 Left on V1:
+	[ ] Det går att åka igenom väggen på den nedersta hinder blocken
 
+
+	[] Trigger food generation in the new frame
 	
-	
-	[ ] Maten kan inte genereas på ett hinder eller på ormen själv
+	[ ] Man kan åka in i en annan frame där nya hinder och mat dyker upp
+	[ ] Maten kan inte genereras på ormen själv
+	[ ] Maten kan inte genereras på ett hinder
 	[X] Crash into obstacles and reset game
 	[X] Spelet startas om och nollställs vid krash in i ett objekt
 	[X] Generera obstacles
 	[X] Generate new food
-	[X] Trigger food generation in the new frame
 	[X] Crash into snake and reset game
 	[X] Spelet startas om om man åker in i sig själv
 	[X] Man kan inte snabbt ändra riktning 2 gånger under 1 frame
@@ -67,4 +70,6 @@ det kommer upp distraherande bilder runtomkring på hemsidan. nakna tjejer osv.
 	behöva göra många jämförelser för att se om de har samm värden. Om jag har en uppdaterad matris över hela banan
 	räcker det med att jag direkt hämtar den cellen dit ormen skall röra sig och se vad som finns där. Vad är då kostnaden? Att jag kommer behöva hålla en uppdaterad matris i minnet. Att spara matrisen i minnet är inget. Detta är antagligen en bättre lösning då det som behövs ändras i matrisen är vart huvudet skall röra sig 
 	och där svansen skall försvinna eller bli kvar om ormen växer. Möjligen kommer två modeller finnas en 
-	för att jämföra vid krash och en för generering av objekt.
+	för att jämföra vid krash och en för generering av objekt. Kanske skulle jag kunna använda mig av en hashtabell
+	där nyckeln genereras av värdet på xochy och koordinat objektet är värdet och på så sätt snabbt kunna se om
+	det existerar ett hinderspunkt på stället där jag vill skapa mat.

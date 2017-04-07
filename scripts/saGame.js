@@ -12,6 +12,8 @@ sa.main = (function () {
 	// Width of game in nr of cells
 	var gameDimension;
 
+	var audioElement = document.getElementById('audio');
+	audioElement.currentTime = 40;
 
 
 	obj.init = function () {
@@ -39,6 +41,8 @@ sa.main = (function () {
 		// Load obstacles object into obstacles module
 		sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
 
+		// Remove obstacles cells from the array of possibles positions for food to be generated to
+		this.removeGameFieldCells(sa.obstacles.getObstacles());
 	}
 
 	// Creates an array holding cells of position objects
@@ -54,6 +58,23 @@ sa.main = (function () {
 		}
 
 		return array;
+	}
+
+	// Takes an Array of cells to remove from gameFieldCellsArray
+	obj.removeGameFieldCells = function (cellsToRemove) {
+		// Gå igenom alla celler som finns för tex hindren och ta bort celler från
+		// Game field arrayen en efter en 
+		for (var i = 0; i < cellsToRemove.length - 1; i++) {
+
+			var indexCounter = gameFieldCellsArray.length - 1;
+			for (var n = 0; n < indexCounter; n++) {
+				if (gameFieldCellsArray[n].x == cellsToRemove[i].x && 
+					gameFieldCellsArray[n].y == cellsToRemove[i].y) {
+					gameFieldCellsArray.splice(n, 1);
+					break;
+				}
+			}
+		}
 	}
 
 	obj.changeFrame = function (direction) {
@@ -105,7 +126,7 @@ sa.main = (function () {
 			sa.snake.growSnake(newpos)
 			sa.food.generate(gameFieldCellsArray);
 			score = score + 1;
-			sa.snake.log();
+			//audioElement.play();
 		} else if (selfCollision || obstacleCollision) {
 			obj.restart();
 			return

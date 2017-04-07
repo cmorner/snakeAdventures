@@ -16,6 +16,8 @@ sa.food = (function () {
 
 		// Randomize an index based of length of gamefieldMatrix
 		var s = gamefieldMatrix.length;
+		
+		// Randomize new foodposition until unoccupied is found
 		var newFoodIndex = Math.floor(Math.random() * s);
 
 		// Get food position object from gamefieldMatrix with index
