@@ -15,8 +15,14 @@ sa.main = (function () {
 
 
 	obj.init = function () {
+		score = 0;
+
+		// Resets snakearray to snakeStartArray
+		sa.snake.reset();
+
 		// Gets the current frame which is an object specifying the obstacles coordinates and possible 
 		// framechanges from the current frame
+		sa.frame.reset()
 		var firstFrame = sa.frame.getCurrentFrame();
 
 		// Get gameDimension based of width of canvas / Width of a cell
@@ -31,7 +37,7 @@ sa.main = (function () {
 		//sa.food.generate(gameFieldCellsArray);
 
 		// Load obstacles object into obstacles module
-		//sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
+		sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
 
 	}
 
@@ -67,6 +73,7 @@ sa.main = (function () {
 		var newpos = sa.snake.createNewPos();
 		
 		var selfCollision = sa.snake.checkCollision(newpos);
+		var obstacleCollision = sa.obstacles.testCollision(newpos);
 
 		var foodCollision = sa.food.hit(newpos);
 
@@ -98,8 +105,10 @@ sa.main = (function () {
 			sa.snake.growSnake(newpos)
 			sa.food.generate(gameFieldCellsArray);
 			score = score + 1;
-		} else if (selfCollision) {
-			//console.log(this);
+			sa.snake.log();
+		} else if (selfCollision || obstacleCollision) {
+			obj.restart();
+			return
 		} else {
 			sa.snake.moveSnake(newpos);
 		}
@@ -107,16 +116,13 @@ sa.main = (function () {
 		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score) // Draw game
 	}
 
+	// Resets everything that has been changed to original settings
 	obj.restart = function () {
+		// Stops gameloop
 		clearInterval(currentIntervalId);
+		
 
-		score = 0;
-		
-		sa.frames.reset();
-		var firstFrame = sa.frame.getCurrentFrame()
-		
-		sa.snake.reset();
-		sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
+		//sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
 
 		this.start();
 	}
