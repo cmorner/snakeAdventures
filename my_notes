@@ -12,6 +12,12 @@ Left on V1:
 	[ ] Trigger food generation in the new frame
 	[ ] Man kan åka in i en annan frame där nya hinder och mat dyker upp
 
+
+	Av någon anledning så blir currentFood undefined när man byter frame
+	vilket också leder till att spelet nu kraschar. Jag har försökt se om någonting skriver över
+	current food men har inte hittat något. funderar över att titta närmare på vad som körs
+	vid frame byte som får currentFood att bli undefined. Jag vill generera en ny bit mat i den nya framen
+	baserad på de hindren som är aktuella i den andra framen.
 	[X] Det går att åka igenom väggen på den nedersta hinder blocken	
 	[X] Maten kan inte genereras på ett hinder
 	[X] Testa att maten inte kan genereras på ett hinder
@@ -68,6 +74,12 @@ Spelet täcks över med en svart canvas och så står det någon text,
 	"What kind of world do you want to live in?"
 	"Lets move towards something better than this"
 
+Göra en lång maze där maten hela tiden läggs precis framför ormhuvudet och som leder vidare in
+till en ny frame där ormhuvudet får en hatt och en deal with it spliff och bakgrunden blir en
+halvnaken tjej eller liknande. Kanske the Lady in red.
+
+en del i spelet kanske man skall ta kol på sig själv med flit för att komma vidare.
+"...sometimes there is only one way forward"
 
 Övriga idéer
 	Optimera man kan byta riktning två gånger i en frame sålänge man inte går emot den ursprungliga riktningen man hade i förra framen. Kan vara en lösning om det är ett problem att man trycker snabbt två gånger men sedan

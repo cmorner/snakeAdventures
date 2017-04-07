@@ -79,7 +79,17 @@ sa.main = (function () {
 
 	obj.changeFrame = function (direction) {
 		var newFrameObj = sa.frame.changeFrame(direction);
+
+		// Reset gameFieldCellsArray
+		gameFieldCellsArray = obj.createGameFieldCellsArray();
+
 		sa.obstacles.setObstaclesArray(newFrameObj.obstaclesArray);
+
+		// Remove gameFieldCells for the new frame
+		obj.removeGameFieldCells(sa.obstacles.getObstacles());
+
+		// Generate new food within the new frame
+		sa.food.generate(gameFieldCellsArray);
 	}
 
 	obj.handleSnakeMovement = function () {}
@@ -100,7 +110,7 @@ sa.main = (function () {
 
 
 		// check the new position of snake head to see if we need to initiate a frame change
-/*		if (newpos.x < 0) {
+		if (newpos.x < 0) {
 			sa.snake.changeFrame('left', 45);
 			newpos.x = newpos.x + 45;
 			console.log('gameloop this', this);
@@ -118,7 +128,7 @@ sa.main = (function () {
 			sa.snake.changeFrame('down', 45);
 			newpos.y = newpos.y - 45;
 			obj.changeFrame('down');
-		}*/
+		}
 		
 		var snakeArray = sa.snake.getSnakeArray();
 
