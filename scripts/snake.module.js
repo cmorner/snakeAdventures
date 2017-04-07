@@ -23,6 +23,11 @@ sa.snake = (function () {
 		direction = newDirection;
 	}
 
+	obj.getDirection = function () {
+		return direction;
+	}
+
+
 	// Creates a new snake objec based on direction
 	obj.createNewPos = function () {
 		var nx,
@@ -61,7 +66,6 @@ sa.snake = (function () {
 		snakeArray.push(newPosObject);
 	}
 
-	// 
 	obj.checkCollision = function (posObj) {
 		var i,
 			snakeLength = this.getLength(),

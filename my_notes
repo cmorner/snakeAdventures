@@ -10,10 +10,17 @@ Left on V1:
 	[] Trigger food generation in the new frame
 	[] Crash into obstacles and reset game
 	[] Crash into snake and reset game
+	[ ] Ormen kan äta mat
+	[X] Ormen kan inte byta riktning in i sig själv 
 
 Optimization
 	- Not redrawing the whole game if not needed 
 	- Drawing bigger areas at the same time
+
+
+Frågor
+	Varför finns det både en frames och en obstacles modul?
+
 
 Game ideas
 Cover the pattern

@@ -8,8 +8,11 @@ sa.main = (function () {
 	var currentIntervalId;
 
 	obj.init = function () {
+		// Gets the current frame which is an object specifying the obstacles coordinates and possible 
+		// framechanges from the current frame
 		var firstFrame = sa.frame.getCurrentFrame();
-		sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
+		// Load obstacles object into obstacles module
+		//sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
 	}
 
 	obj.changeFrame = function (direction) {
@@ -24,11 +27,14 @@ sa.main = (function () {
 		var obstaclesArray = sa.obstacles.getObstacles(); // Only needs to be updated if Frame change
 
 		var newpos = sa.snake.createNewPos();
-		var selfCollision = sa.snake.checkCollision(newpos);
-		var foodCollision = sa.food.hit(newpos);
+		//var selfCollision = sa.snake.checkCollision(newpos);
+		//var foodCollision = sa.food.hit(newpos);
+
+		var selfCollision = false;
+		var foodCollision = false;
 
 		// check the new position of snake head to see if we need to initiate a frame change
-		if (newpos.x < 0) {
+/*		if (newpos.x < 0) {
 			sa.snake.changeFrame('left', 45);
 			newpos.x = newpos.x + 45;
 			console.log('gameloop this', this);
@@ -46,7 +52,7 @@ sa.main = (function () {
 			sa.snake.changeFrame('down', 45);
 			newpos.y = newpos.y - 45;
 			obj.changeFrame('down');
-		}
+		}*/
 		
 		var snakeArray = sa.snake.getSnakeArray();
 
@@ -54,12 +60,12 @@ sa.main = (function () {
 			sa.snake.growSnake(newpos)
 			score = score + 1;
 		} else if (selfCollision) {
-			console.log(this);
+			//console.log(this);
 		} else {
 			sa.snake.moveSnake(newpos);
 		}
 
-		console.log(this);
+		console.log(snakeArray);
 		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score) // Draw game
 	}
 

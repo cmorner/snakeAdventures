@@ -1,7 +1,5 @@
 var sa = sa || {};
 
-var sa = sa || {};
-
 
 
 sa.frame = (function () {
