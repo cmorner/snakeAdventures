@@ -8,6 +8,7 @@ V1
 Left on V1:
 	
 	[ ] Mergea alla branches
+	[ ] Ta bort oanvända filer
 	[X] Om man pausar så stannar ormen för men sen när man startar den så går den snabbare än tidigare
 	[X] Maten kan genereras på de nya bangränserna
 	Det verkar som om något blir fel när hindrens punkter skall tas bort från gamefieldmatrixarray
@@ -88,6 +89,17 @@ Slowmotion - sänka frameraten i ett visst antal sekunder
 
 fiender som föjer efter en - vissa kanske tom i riktningen dit man åker
 
+
+I nästa level så är varje mat värt mer än den tidigare
+
+Dator mode där en algoritm spelar masken
+
+bonusar och glädjande ord medans man tar mat dessutom ökar mängden poäng man får hela tiden
+	"You look great today!", "Woaw those pants really fit, where did you buy those?",
+	"Nice play!"
+
+
+oväntade bonusar
 
 
 
