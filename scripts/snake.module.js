@@ -1,13 +1,13 @@
 var sa = sa || {};
 
 sa.snake = (function () {
-	var snakeArray = [{x:0, y:0}, {x: 1, y:0}, {x: 2, y:0}, {x: 3, y:0}, {x: 4, y:0}];
+	var snakeArray = [{x:0, y:4}, {x: 1, y:4}, {x: 2, y:4}, {x: 3, y:4}, {x: 4, y:4}];
 	var direction = 'right';
 
 	var obj = {};
 
 	obj.reset = function () {
-		snakeArray = [{x:0, y:0}, {x: 1, y:0}, {x: 2, y:0}, {x: 3, y:0}, {x: 4, y:0}];
+		snakeArray = [{x:0, y:4}, {x: 1, y:4}, {x: 2, y:4}, {x: 3, y:4}, {x: 4, y:4}];
 		direction = 'right';
 
 	}

@@ -6,6 +6,8 @@ sa.main = (function () {
 	var score = 0;
 
 	var currentIntervalId;
+	var intervalRate = 60;
+	var activeInterval = true;
 
 	var gameFieldCellsArray = [];
 
@@ -35,14 +37,12 @@ sa.main = (function () {
 		// Add eventlisteners to keydown
 		sa.controls.bindKeyEvents();
 
-		// Generate the initial food Coordinates based based on available coordinates
-		//sa.food.generate(gameFieldCellsArray);
-
 		// Load obstacles object into obstacles module
 		sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
 
 		// Remove obstacles cells from the array of possibles positions for food to be generated to
 		this.removeGameFieldCells(sa.obstacles.getObstacles());
+		
 	}
 
 	// Creates an array holding cells of position objects
@@ -66,7 +66,7 @@ sa.main = (function () {
 		// Game field arrayen en efter en 
 		for (var i = 0; i < cellsToRemove.length ; i++) {
 
-			var indexCounter = gameFieldCellsArray.length - 1;
+			var indexCounter = gameFieldCellsArray.length;
 			for (var n = 0; n < indexCounter; n++) {
 				if (gameFieldCellsArray[n].x == cellsToRemove[i].x && 
 					gameFieldCellsArray[n].y == cellsToRemove[i].y) {
@@ -81,7 +81,7 @@ sa.main = (function () {
 		var newFrameObj = sa.frame.changeFrame(direction);
 
 		// Reset gameFieldCellsArray
-		gameFieldCellsArray = obj.createGameFieldCellsArray();
+		gameFieldCellsArray = obj.createGameFieldCellsArray(45);
 
 		sa.obstacles.setObstaclesArray(newFrameObj.obstaclesArray);
 
@@ -113,10 +113,8 @@ sa.main = (function () {
 		if (newpos.x < 0) {
 			sa.snake.changeFrame('left', 45);
 			newpos.x = newpos.x + 45;
-			console.log('gameloop this', this);
 			obj.changeFrame('left');
 		} else if (newpos.x > 45) {
-			console.log(1);
 			sa.snake.changeFrame('right', 45);
 			newpos.x = newpos.x - 45;
 			obj.changeFrame('right');
@@ -136,6 +134,10 @@ sa.main = (function () {
 			sa.snake.growSnake(newpos)
 			sa.food.generate(gameFieldCellsArray);
 			score = score + 1;
+			// if score is 10 open door
+			if (score==10) {
+				sa.frame.openDoorX0Y0();
+			}
 			//audioElement.play();
 		} else if (selfCollision || obstacleCollision) {
 			obj.restart();
@@ -152,16 +154,32 @@ sa.main = (function () {
 		// Stops gameloop
 		clearInterval(currentIntervalId);
 		
+		//Rebuild frames
+		sa.frame.buildFrameX0Y0(45);
 
 		//sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
 
 		this.start();
 	}
 
+	obj.togglePause = function () {
+		if (activeInterval) {
+			clearInterval(currentIntervalId);
+			activeInterval = false;
+		//audioElement.pause();
+		} else {
+			console.log('activeInterval ', activeInterval);
+			activeInterval = true;
+			currentIntervalId = setInterval(this.gameLoop, intervalRate);
+			//if (musicActivated) {
+			//	audioElement.play();
+			//}
+		}
+	}
+
 	obj.start = function () {
-		console.log('init this', this);
 		this.init();
-		currentIntervalId = setInterval(this.gameLoop, 60);
+		currentIntervalId = setInterval(this.gameLoop, intervalRate);
 	}
 
 	return obj;

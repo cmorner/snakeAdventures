@@ -46,16 +46,50 @@ sa.frame = (function () {
 		return frames[currentFrameId];
 	}
 
+	obj.buildFrameX0Y0 = function (dimension) {
+		var mazeCoords = [];
+		for (var i=0; i < dimension; i++) {
+			mazeCoords.push({x: i, y: 0});	
+		}
+		for (var i=0; i < dimension; i++) {
+			mazeCoords.push({x: i, y: 44});	
+		}
+		for (var i=1; i < dimension-1; i++) {
+			mazeCoords.push({x: 0, y: i});	
+		}
+		for (var i=1; i < dimension-1; i++) {
+			mazeCoords.push({x: 44, y: i});	
+		}
+		frames.x0y0.obstaclesArray = mazeCoords;
+	}
+
+	obj.buildFrameX0Y0(45);
+
+	obj.openDoorX0Y0 = function () {
+		frames.x0y0.obstaclesArray.splice(150, 9)
+	}
+
+	obj.buildFrameX1Y0 = function (dimension) {
+		var mazeCoords = [];
+		for (var i=0; i < dimension; i++) {
+			mazeCoords.push({x: i, y: 0});	
+		}
+		for (var i=0; i < dimension; i++) {
+			mazeCoords.push({x: i, y: 44});	
+		}
+		for (var i=1; i < dimension-1; i++) {
+			mazeCoords.push({x: 0, y: i});	
+		}
+		for (var i=1; i < dimension-1; i++) {
+			mazeCoords.push({x: 44, y: i});	
+		}
+
+		mazeCoords.splice(107, 9);
+
+		frames.x1y0.obstaclesArray = mazeCoords;
+	}
+
+	obj.buildFrameX1Y0(45);
+
 	return obj;
 })();
-
-/*// Generate x0y0 maze
-(function () {
-	var mazeCoords = [];
-	for (var i=20; i <= nrOfCols-1; i++){
-		for (var n=0; n <= nrOfCols-1; n++) {
-			mazeCoords.push({x:n, y:i});
-		}
-	}
-	frames.x0y0.mazeCoords = mazeCoords;
-}());*/

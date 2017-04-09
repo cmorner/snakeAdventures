@@ -10,7 +10,7 @@ sa.controls = (function () {
 	obj.bindKeyEvents = function () {
 		// binds a handler to the keydown event to set snake direction
 		document.onkeydown = function (e) {
-			if (directionChangeLocked) {
+			if (directionChangeLocked && e.keyCode != 80) {
 				return
 			} else {
 				switch (e.keyCode) {
@@ -37,6 +37,9 @@ sa.controls = (function () {
 							sa.snake.setDirection('down');
 							directionChangeLocked = true;
 						}
+						break;
+					case 80: // p button
+						sa.main.togglePause();
 						break;
 				}
 			}

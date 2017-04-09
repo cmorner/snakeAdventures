@@ -7,17 +7,15 @@ V1
 
 Left on V1:
 	
+	[ ] Mergea alla branches
+	[X] Om man pausar så stannar ormen för men sen när man startar den så går den snabbare än tidigare
+	[X] Maten kan genereras på de nya bangränserna
+	Det verkar som om något blir fel när hindrens punkter skall tas bort från gamefieldmatrixarray
+	då det det verkar gå att generera mat på platser där hinder finns
 
-
-	[ ] Trigger food generation in the new frame
-	[ ] Man kan åka in i en annan frame där nya hinder och mat dyker upp
-
-
-	Av någon anledning så blir currentFood undefined när man byter frame
-	vilket också leder till att spelet nu kraschar. Jag har försökt se om någonting skriver över
-	current food men har inte hittat något. funderar över att titta närmare på vad som körs
-	vid frame byte som får currentFood att bli undefined. Jag vill generera en ny bit mat i den nya framen
-	baserad på de hindren som är aktuella i den andra framen.
+	[X] Bygga en två frames som är inringade
+	[X] Trigger food generation in the new frame
+	[X] Man kan åka in i en annan frame där nya hinder och mat dyker upp
 	[X] Det går att åka igenom väggen på den nedersta hinder blocken	
 	[X] Maten kan inte genereras på ett hinder
 	[X] Testa att maten inte kan genereras på ett hinder
@@ -35,6 +33,7 @@ Left on V1:
 
 Less important possible game improvements
 	Maten genereras inte på ormen själv
+	ta bort den gråa tunna linjen runt spelet för att tydliggöra dörren
 
 Optimization
 	- Not redrawing the whole game if not needed 
@@ -80,6 +79,17 @@ halvnaken tjej eller liknande. Kanske the Lady in red.
 
 en del i spelet kanske man skall ta kol på sig själv med flit för att komma vidare.
 "...sometimes there is only one way forward"
+
+Lägga in speciella checkar i varje frame för events. Typ vid 15 poäng så öppnas en port eller någon funktion körs.
+
+Det finns fiender som rör sig och om man krockar med dom så dör man
+
+Slowmotion - sänka frameraten i ett visst antal sekunder
+
+fiender som föjer efter en - vissa kanske tom i riktningen dit man åker
+
+
+
 
 Övriga idéer
 	Optimera man kan byta riktning två gånger i en frame sålänge man inte går emot den ursprungliga riktningen man hade i förra framen. Kan vara en lösning om det är ett problem att man trycker snabbt två gånger men sedan
