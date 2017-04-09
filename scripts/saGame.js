@@ -95,11 +95,23 @@ sa.main = (function () {
 	obj.handleSnakeMovement = function () {}
 
 	obj.gameLoop = function () {
-		// Unlocks lock that prevents user from changing direction more than once per frame
-		sa.controls.unlockDirectionChange();
 
 		var foodCoords = sa.food.current(); // Only needs to be updated if frameChange or new food
 		var obstaclesArray = sa.obstacles.getObstacles(); // Only needs to be updated if Frame change
+
+
+		if (sa.autoplay.active()) {
+			// Calculate newDirection takes headPosition, foodposition
+			var snakeHead = sa.snake.getSnakeHead();
+			//var currentDirection = sa.snake.getDirection();
+			var newDirection = sa.autoplay.calculateNewDirection(snakeHead, foodCoords);
+			//sa.snake.setDirection(newDirection);
+		} else {
+			// Unlocks lock that prevents user from changing direction more than once per frame
+			sa.controls.unlockDirectionChange();
+		}
+
+
 
 		var newpos = sa.snake.createNewPos();
 		
@@ -130,6 +142,7 @@ sa.main = (function () {
 		
 		var snakeArray = sa.snake.getSnakeArray();
 
+
 		if (foodCollision) { 
 			sa.snake.growSnake(newpos)
 			sa.food.generate(gameFieldCellsArray);
@@ -146,7 +159,9 @@ sa.main = (function () {
 			sa.snake.moveSnake(newpos);
 		}
 
-		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score) // Draw game
+
+		// Draw game
+		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score)
 	}
 
 	// Resets everything that has been changed to original settings
@@ -157,20 +172,24 @@ sa.main = (function () {
 		//Rebuild frames
 		sa.frame.buildFrameX0Y0(45);
 
-		//sa.obstacles.setObstaclesArray(firstFrame.obstaclesArray);
+		// If snake dies when autoplay is active shutoff autoplay
+		if (sa.autoplay.active()) sa.autoplay.toggleAutoplay(); 
 
 		this.start();
 	}
 
 	obj.togglePause = function () {
+		var pauseStatusElement = document.getElementById('pause_status');
 		if (activeInterval) {
 			clearInterval(currentIntervalId);
 			activeInterval = false;
+			pauseStatusElement.innerText = 'paused'; // Set text of html element
 		//audioElement.pause();
 		} else {
 			console.log('activeInterval ', activeInterval);
 			activeInterval = true;
 			currentIntervalId = setInterval(this.gameLoop, intervalRate);
+			pauseStatusElement.innerText = 'unpaused'; // Set text of html element
 			//if (musicActivated) {
 			//	audioElement.play();
 			//}

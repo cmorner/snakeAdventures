@@ -5,6 +5,10 @@
 	</head>
 	<body>
 		<canvas id="canvas" width=405 height=405></canvas>
+		<p id="status_block">
+			(P)ause: <span id="pause_status">unpaused</span><br>
+			(A)utoplay: <span id="autoplay_status">deactivated</span>
+		</p>
 
 		<audio id="audio" src="resources/music.mp3" type="audio/mpeg" ></audio>
 		<script type="text/javascript" src="scripts/frames.module.js"></script>
@@ -13,6 +17,7 @@
 		<script type="text/javascript" src="scripts/controls.module.js"></script>
 		<script type="text/javascript" src="scripts/food.module.js"></script>
 		<script type="text/javascript" src="scripts/obstacles.module.js"></script>
+		<script type="text/javascript" src="scripts/autoplay.module.js"></script>
 		<script type="text/javascript" src="scripts/saGame.js"></script>
 	</body>
 </html>

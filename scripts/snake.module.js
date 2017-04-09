@@ -12,6 +12,17 @@ sa.snake = (function () {
 
 	}
 
+	obj.createAutoplaySnake = function () {
+		var length = snakeArray.length;
+		console.log('snakeArray: ', snakeArray);
+		snakeArray = snakeArray.splice(snakeArray.length-1, 1);
+		console.log('snakeArray: ', snakeArray);
+	}
+
+	obj.getSnakeHead = function () {
+		return snakeArray[snakeArray.length-1];
+	}
+
 	obj.getSnakeArray = function () {
 		return snakeArray;
 	}
