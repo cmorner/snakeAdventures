@@ -14,6 +14,8 @@ sa.main = (function () {
 	// Width of game in nr of cells
 	var gameDimension;
 
+	var firstRun = true;
+
 	var audioElement = document.getElementById('audio');
 	audioElement.currentTime = 40;
 
@@ -162,7 +164,14 @@ sa.main = (function () {
 
 		// Draw game
 		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score)
+		
+		if (firstRun) {
+			obj.togglePause();
+			firstRun = false;
+		}
+
 	}
+	
 
 	// Resets everything that has been changed to original settings
 	obj.restart = function () {
