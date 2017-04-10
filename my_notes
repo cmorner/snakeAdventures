@@ -1,14 +1,13 @@
 SnakeAdventures - V1.11 save highscore
 
-[ ] Current Highscore will be displayed under the game area
-[ ] If a new highscore is achieved the score will be updated and the current
-snakearray will be saved to some kind of storage, either localstorage or a cookie
-[ ] One can retrieve the moment when the highscore was achieved by
+
+
+[X] One can retrieve the moment when the highscore was achieved by
 pressing a key which will load the score, the snakeArray at the time and pause the game
-
-
-
-
+[X] If a new highscore is achieved the score will be updated and the current
+snakearray will be saved to some kind of storage, either localstorage or a cookie
+[X] Current Highscore will be displayed under the game area
+[X] Få highscoren att bli uppdaterad om man gör en
 
 Less important possible game improvements
 	Maten genereras inte på ormen själv
@@ -24,6 +23,9 @@ Improvement autoplay algorithm
 	- Ormen dör när den försätter sig själv i en fälla. Den åker in i en ruta varifrån alla utgångar
 	leder till döden. Om ormen kan göra en utvärdering av dess läga från den rutan den kommer befinna 
 	sig i borde den 
+
+Improvement viewHighScoreSnake
+	- Save the location of the food at the time of the highscore so it can be displayed correctly
 
 
 Workenvironment
@@ -137,7 +139,8 @@ I vilken ordning sker sakerna i en for slinga? När adderas det till variabeln o
 hur går det ihop att (var i=0; i<length;i++) tar alla index i en array. mer specifikt har jag oklarheter
 kring i<length istället för i<length-1.
 
-
+Hur hanterar man många states som skall vara på ett visst sätt vid en viss tidpunkt?
+som en tabell vad som skall vad vara
 
 Arkiv:
 

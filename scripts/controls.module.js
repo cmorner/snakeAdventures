@@ -10,7 +10,7 @@ sa.controls = (function () {
 	obj.bindKeyEvents = function () {
 		// binds a handler to the keydown event to set snake direction
 		document.onkeydown = function (e) {
-			if (directionChangeLocked && e.keyCode != 80 && e.keyCode != 65) {
+			if (directionChangeLocked && e.keyCode != 80 && e.keyCode != 65 && e.keyCode != 72) {
 				return
 			} else {
 				switch (e.keyCode) {
@@ -39,10 +39,16 @@ sa.controls = (function () {
 						}
 						break;
 					case 80: // p button
-						sa.main.togglePause();
+						// If viewHighScoreMode is activated the pause button is disabled
+						if (!sa.highScore.viewHighScoreSnakeActivated()) {
+							sa.main.togglePause();
+						}
 						break;
 					case 65: // a button
 						sa.autoplay.toggleAutoplay();
+						break;
+					case 72: // h button
+						sa.highScore.viewHighScoreSnake();
 						break;
 				}
 			}

@@ -14,13 +14,11 @@ sa.autoplay = (function () {
 		if (autoplayActivated) {
 			autoplayActivated = false;
 			autoplayStatusTextElement.innerText = 'deactivated';
-			console.log('autoplaydeActivated');
 		} else {
 			autoplayActivated = true;
 			sa.controls.lockDirectionChange();
 			//sa.snake.createAutoplaySnake();
 			autoplayStatusTextElement.innerText = 'activated';
-			console.log('autoplayActivated');
 		}
 	}
 
@@ -106,7 +104,6 @@ sa.autoplay = (function () {
 		// Choose the newPosition that is closest to food
 		// By comparing the thre possibles alternatives relative to each other
 		var np = possibleNewPositionDistanceFromFood;
-		console.log(np, directionsIndex);
 		if (np[0] <= np[1] && np[0] <= np[2]) {
 			newDirection = directionsIndex[0];
 		} else if (np[1] <= np[0] && np[1] <= np[2]) {

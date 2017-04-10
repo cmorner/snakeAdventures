@@ -27,6 +27,10 @@ sa.food = (function () {
 		currentFood = currentFoodCoordinates;
 	}
 
+	obj.getCurrentFood = function () {
+		return currentFood;
+	}
+
 	obj.hit = function (posObj) {
 		if (posObj.x == currentFood.x && posObj.y == currentFood.y) {
 			return true;

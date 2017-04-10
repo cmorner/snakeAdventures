@@ -45,6 +45,10 @@ sa.main = (function () {
 		// Remove obstacles cells from the array of possibles positions for food to be generated to
 		this.removeGameFieldCells(sa.obstacles.getObstacles());
 		
+
+		// Get highscore and display it for user
+		document.getElementById('high_score').innerText = sa.highScore.getHighScore();
+
 	}
 
 	// Creates an array holding cells of position objects
@@ -107,7 +111,6 @@ sa.main = (function () {
 			var snakeHead = sa.snake.getSnakeHead();
 			var currentDirection = sa.snake.getDirection();
 			var newDirection = sa.autoplay.calculateNewDirection(snakeHead, foodCoords, currentDirection);
-			console.log(newDirection);
 			sa.snake.setDirection(newDirection);
 		} else {
 			// Unlocks lock that prevents user from changing direction more than once per frame
@@ -182,7 +185,16 @@ sa.main = (function () {
 		//Rebuild frames
 		sa.frame.buildFrameX0Y0(45);
 
+		// set potential highScore and store highScore snakearray
+		if (score > sa.highScore.getHighScore()) {
+			sa.highScore.setHighScore(score, sa.snake.getSnakeArray(), sa.food.getCurrentFood());
+		}
+
 		this.start();
+	}
+
+	obj.pauseActivated = function () {
+		return !activeInterval;
 	}
 
 	obj.togglePause = function () {
@@ -193,7 +205,6 @@ sa.main = (function () {
 			pauseStatusElement.innerText = 'paused'; // Set text of html element
 		//audioElement.pause();
 		} else {
-			console.log('activeInterval ', activeInterval);
 			activeInterval = true;
 			currentIntervalId = setInterval(this.gameLoop, intervalRate);
 			pauseStatusElement.innerText = 'unpaused'; // Set text of html element

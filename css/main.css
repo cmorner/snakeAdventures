@@ -14,3 +14,8 @@ body {
 	width: 405px;
 	margin: 0 auto;
 }
+
+.high_score_container {
+	float: right;
+	text-align: right;
+}

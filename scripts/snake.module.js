@@ -12,6 +12,11 @@ sa.snake = (function () {
 
 	}
 
+	obj.getStartSnakeArray = function () {
+		snakeArray = [{x:0, y:4}, {x: 1, y:4}, {x: 2, y:4}, {x: 3, y:4}, {x: 4, y:4}];
+		return snakeArray;
+	}
+
 	obj.createAutoplaySnake = function () {
 		var length = snakeArray.length;
 		console.log('snakeArray: ', snakeArray);
