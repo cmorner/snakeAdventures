@@ -105,9 +105,10 @@ sa.main = (function () {
 		if (sa.autoplay.active()) {
 			// Calculate newDirection takes headPosition, foodposition
 			var snakeHead = sa.snake.getSnakeHead();
-			//var currentDirection = sa.snake.getDirection();
-			var newDirection = sa.autoplay.calculateNewDirection(snakeHead, foodCoords);
-			//sa.snake.setDirection(newDirection);
+			var currentDirection = sa.snake.getDirection();
+			var newDirection = sa.autoplay.calculateNewDirection(snakeHead, foodCoords, currentDirection);
+			console.log(newDirection);
+			sa.snake.setDirection(newDirection);
 		} else {
 			// Unlocks lock that prevents user from changing direction more than once per frame
 			sa.controls.unlockDirectionChange();
@@ -161,10 +162,10 @@ sa.main = (function () {
 			sa.snake.moveSnake(newpos);
 		}
 
-
 		// Draw game
 		sa.canvas.drawGame(snakeArray, obstaclesArray, foodCoords, score)
 		
+		// If first run pause game, less stressful :)
 		if (firstRun) {
 			obj.togglePause();
 			firstRun = false;
@@ -180,9 +181,6 @@ sa.main = (function () {
 		
 		//Rebuild frames
 		sa.frame.buildFrameX0Y0(45);
-
-		// If snake dies when autoplay is active shutoff autoplay
-		if (sa.autoplay.active()) sa.autoplay.toggleAutoplay(); 
 
 		this.start();
 	}

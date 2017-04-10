@@ -1,7 +1,5 @@
 Snake Adventure V1.1 - Autoplay
 
-
-- När man sätter på autoplay blir ormen bara ett huvud lång
 - Ormhuvudet börjar åka runt och samla in mat av sig själv
 - Det ska gå att sätta på och stänga av autoplay
 - När man stänger av autoPlay så får man fortsätta från där huvudet är för tillfället
@@ -37,7 +35,7 @@ Om ormen hela tiden väljer det alternativ av dom tre som den har som tar ormen 
 Så tror jag att ormen borde överleva
 
 
-[ ] Ormen styr iväg från väggar när autoplay är aktiverat
+[X] Ormen styr iväg från väggar när autoplay är aktiverat
 [X] Make snake become a head only when autoplay is activated
 [X] Det går att aktivera autoplay genom att trycka på a
 [X] Det finns någon status om spelet är pausat eller satt på autoplay
@@ -50,7 +48,19 @@ Less important possible game improvements
 Optimization
 	- Not redrawing the whole game if not needed 
 	- Drawing bigger areas at the same time
+	Refaktorering av många funktioner. vissa funktioner växer och gör kanske för mycket
+	och andra kan skrivas tydligare, mindre kod, mindre benäget för buggar.
 
+Improvement autoplay algorithm
+	- Ormen dör när den försätter sig själv i en fälla. Den åker in i en ruta varifrån alla utgångar
+	leder till döden. Om ormen kan göra en utvärdering av dess läga från den rutan den kommer befinna 
+	sig i borde den 
+
+
+Workenvironment
+	Jag märker att många fel är på grund av att variabler eller liknande får fel namn
+	vilket skulle kunna undvikas av en riktig IDE som sparar de variabelnamnen som jag
+	har skapat och säger till om jag refererar fel.
 
 Frågor
 	Borde autplay modulen själv ändra ormens riktningar eller borde den returnera och
@@ -140,10 +150,23 @@ oväntade bonusar
 	I sublime skulle jag vilja att parametrarna för en viss function som jag har specificierat kommer upp
 	när jag skall kalla på den funktionen
 
+	Jag vill att spelet skall kunna köras och att varje score skall lagras i en textfil
+	vid en ny highscore så vill jag att datorn skall ta ett nytt printscreen och spara i en mapp.
+	Jag är osäker på om en webbläsare kan skriva till datorns filer? men en lösning skulle kunna
+	vara att vid en highscore så sparar jag ner snakeArray i en variabel så kan man med en
+	knapptryckning återbesöka hur ormen såg ut vid tillfället då highscoren uppnåddes.
+	Det går att skapa en textfil som kan laddas ner av användaren. Och att man kan
+	spara mindre data localstorage, cookies. cookies skulle ju kunna vara bra.
+
+
+Technical questions
 
 Hur skall man skriva för att man skall göra något för varje element i en array,
 exempelvis (var i=0; i<lengthOfArray;i++) är det såhär man gör något för varje element i arrayen?
 
+I vilken ordning sker sakerna i en for slinga? När adderas det till variabeln och när utvärderas den
+hur går det ihop att (var i=0; i<length;i++) tar alla index i en array. mer specifikt har jag oklarheter
+kring i<length istället för i<length-1.
 
 
 
