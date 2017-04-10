@@ -1,4 +1,10 @@
-SnakeAdventures - V1.11
+SnakeAdventures - V1.11 save highscore
+
+[ ] Current Highscore will be displayed under the game area
+[ ] If a new highscore is achieved the score will be updated and the current
+snakearray will be saved to some kind of storage, either localstorage or a cookie
+[ ] One can retrieve the moment when the highscore was achieved by
+pressing a key which will load the score, the snakeArray at the time and pause the game
 
 
 
