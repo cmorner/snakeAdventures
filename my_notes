@@ -1,44 +1,7 @@
-Snake Adventure V1.1 - Autoplay
-
-- Ormhuvudet börjar åka runt och samla in mat av sig själv
-- Det ska gå att sätta på och stänga av autoplay
-- När man stänger av autoPlay så får man fortsätta från där huvudet är för tillfället
-- Det visas en liten text under snakespelet med en text som säger autoplay is activated
-- Om man försöker ändra riktning medans autoplay är igång så händer ingenting
-
-Ormen skall när man trycker på autoplay börja åka runt själv och äta upp mat i första framen
-
-En förenklad version skulle vara om ormen inte växte och bara hade ett huvud vilket är 
+SnakeAdventures - V1.11
 
 
-Något får ormen att tappa en liten bit men sen stannar spelet av
 
-Det sista jag gör nu är att jag befinner mig i calculateNewDirection metoden
-och skall först kolla vilka alternativ som finns för ormen i ett visst läge
-den kan åka vänster höger eller rakt fram relativt dess nuvarande riktning.
-Jag kan se efter vilka av dessa vägar som är valbara och som inte innebär död
-Eftersom banan ser ut som den gör och det bara är ett huvud som åker runt
-så kommer ormen alltid kunna ta sig ur kniper med endast vetskap om dess tre alternativ.
-det vill säga utan någon förmåga att 'tänka' och inte bara avgöra baserat på vilka
-alternativ den står inför nu. T.ex är det bra för ormen då dess mål är att samla mat att
-den kan vända och riktning och börja åka mot maten. Dock skall den aldrig åka in i en vägg.
-
-Vad innebär de tre alternativen ormen har i nuläget?
-
-
-1. Undvik att dö
-2. Vilket alternativ tar ormen närmare relativt maten (detta innebär också att komma mindre långt
-ifrån maten)
-3. Hur skall jag räkna ut detta? Pythagoras sats?
-
-Om ormen hela tiden väljer det alternativ av dom tre som den har som tar ormen närmare maten
-Så tror jag att ormen borde överleva
-
-
-[X] Ormen styr iväg från väggar när autoplay är aktiverat
-[X] Make snake become a head only when autoplay is activated
-[X] Det går att aktivera autoplay genom att trycka på a
-[X] Det finns någon status om spelet är pausat eller satt på autoplay
 
 
 Less important possible game improvements
@@ -171,6 +134,49 @@ kring i<length istället för i<length-1.
 
 
 Arkiv:
+
+Snake Adventure V1.1 - Autoplay
+
+- Ormhuvudet börjar åka runt och samla in mat av sig själv
+- Det ska gå att sätta på och stänga av autoplay
+- När man stänger av autoPlay så får man fortsätta från där huvudet är för tillfället
+- Det visas en liten text under snakespelet med en text som säger autoplay is activated
+- Om man försöker ändra riktning medans autoplay är igång så händer ingenting
+
+Ormen skall när man trycker på autoplay börja åka runt själv och äta upp mat i första framen
+
+En förenklad version skulle vara om ormen inte växte och bara hade ett huvud vilket är 
+
+
+Något får ormen att tappa en liten bit men sen stannar spelet av
+
+Det sista jag gör nu är att jag befinner mig i calculateNewDirection metoden
+och skall först kolla vilka alternativ som finns för ormen i ett visst läge
+den kan åka vänster höger eller rakt fram relativt dess nuvarande riktning.
+Jag kan se efter vilka av dessa vägar som är valbara och som inte innebär död
+Eftersom banan ser ut som den gör och det bara är ett huvud som åker runt
+så kommer ormen alltid kunna ta sig ur kniper med endast vetskap om dess tre alternativ.
+det vill säga utan någon förmåga att 'tänka' och inte bara avgöra baserat på vilka
+alternativ den står inför nu. T.ex är det bra för ormen då dess mål är att samla mat att
+den kan vända och riktning och börja åka mot maten. Dock skall den aldrig åka in i en vägg.
+
+Vad innebär de tre alternativen ormen har i nuläget?
+
+
+1. Undvik att dö
+2. Vilket alternativ tar ormen närmare relativt maten (detta innebär också att komma mindre långt
+ifrån maten)
+3. Hur skall jag räkna ut detta? Pythagoras sats?
+
+Om ormen hela tiden väljer det alternativ av dom tre som den har som tar ormen närmare maten
+Så tror jag att ormen borde överleva
+
+
+[X] Ormen styr iväg från väggar när autoplay är aktiverat
+[X] Make snake become a head only when autoplay is activated
+[X] Det går att aktivera autoplay genom att trycka på a
+[X] Det finns någon status om spelet är pausat eller satt på autoplay
+
 
 
 
