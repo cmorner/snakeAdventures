@@ -60,6 +60,10 @@ sa.frame = (function () {
 		for (var i=1; i < dimension-1; i++) {
 			mazeCoords.push({x: 44, y: i});	
 		}
+
+		// For test purpose
+		//mazeCoords.push({x:2, y:1});
+
 		frames.x0y0.obstaclesArray = mazeCoords;
 	}
 

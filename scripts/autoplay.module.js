@@ -27,7 +27,7 @@ sa.autoplay = (function () {
 	}
 
 	// Function to make the snakes next decision
-	obj.calculateNewDirection = function (headPosition, foodPosition, currentDirection) {
+	obj.calculateNewDirection = function (headPosition, foodPosition, currentDirection, recursiveCall) {
 		var newDirection,
 			possibleNewPositions = [],
 			possibleNewPositionDistanceFromFood = [],// option1, option2 and option3 stores distance from food
@@ -101,9 +101,31 @@ sa.autoplay = (function () {
 			//var selfCollision = sa.snake.checkCollision(newpos);
 		}
 
+		var np = possibleNewPositionDistanceFromFood,
+			pointArray;
+		// Second level check
+		// checking to see if any of the positions will kill the snake in the next step
+		if (!recursiveCall) {
+			for (var i=0; i<possibleNewPositions.length;i++) {
+				// If point is obstacles no need to check
+				if (np[i] == 99999) continue;
+
+				pointArray = obj.calculateNewDirection(possibleNewPositions[i], foodPosition, directionsIndex[i], true)[1];
+				// If point np[i] does not have any possible ways from it which is checked
+				// by recursively calling calculateNewDirection we will say the point is the
+				// Same as an obstacle
+				if (99999 == pointArray[0] && 99999 == pointArray[1] && 99999 == pointArray[2]) {
+					np[i] = 99999;
+					console.log('this happended!');
+				}
+			}
+		}
+
+
+
 		// Choose the newPosition that is closest to food
 		// By comparing the thre possibles alternatives relative to each other
-		var np = possibleNewPositionDistanceFromFood;
+		
 		if (np[0] <= np[1] && np[0] <= np[2]) {
 			newDirection = directionsIndex[0];
 		} else if (np[1] <= np[0] && np[1] <= np[2]) {
@@ -112,10 +134,23 @@ sa.autoplay = (function () {
 			newDirection = directionsIndex[2];
 		}
 
-		// Nu behöver jag ha någon slags koppling mellan den bästa punkten tillbaka till vilket riktnings
-		// alternativ det innebar
+		// 
 
-		return newDirection;
+		return [newDirection, np];
+	}
+
+
+	// jag behöver se om den punkten som vid första anblick verkar bra det utifrån den 
+	// bara finns obstacles så bör den punkten betraktas lika illa som att åka in i ett hinder direkt
+	// Jag tänker göra detta med ett rekursivt anrop och en blockering i koden som 
+	// ser till så att jag inte hamnar i en evighetsloop
+
+	// Koden tar de punkterna som inte är 9999 och gör en check 
+
+
+	// Here we check if all values in array is 99999 (obstacle)
+	obj.checkValuesInArray = function () {
+
 	}
 
 

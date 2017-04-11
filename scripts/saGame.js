@@ -110,7 +110,7 @@ sa.main = (function () {
 			// Calculate newDirection takes headPosition, foodposition
 			var snakeHead = sa.snake.getSnakeHead();
 			var currentDirection = sa.snake.getDirection();
-			var newDirection = sa.autoplay.calculateNewDirection(snakeHead, foodCoords, currentDirection);
+			var newDirection = sa.autoplay.calculateNewDirection(snakeHead, foodCoords, currentDirection, false)[0];
 			sa.snake.setDirection(newDirection);
 		} else {
 			// Unlocks lock that prevents user from changing direction more than once per frame
@@ -217,6 +217,13 @@ sa.main = (function () {
 	obj.start = function () {
 		this.init();
 		currentIntervalId = setInterval(this.gameLoop, intervalRate);
+		// Test calculateNewDirection
+
+		//var test = sa.autoplay.calculateNewDirection({x:1, y:2}, {x:3, y:1}, 'left', false);
+
+		//console.log('test', test);
+		//console.log('expected result: down [12, 99, 99]');
+		//headPosition, foodPosition, currentDirection, recursiveCall
 	}
 
 	return obj;
